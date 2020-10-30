@@ -6,12 +6,14 @@
 package paint;
 
 import java.util.ArrayList;
+import java.util.Collections;
 /**
  *
  * @author Ivan
  */
 public class Paint {
 
+    ArrayList<Dibujable> lista_elementos_dibujables;
     /**
      * @param args the command line arguments
      */
@@ -45,14 +47,42 @@ public class Paint {
         //lista_de_figuras[2].mover(6, 6); -> No funciona :(
         lista_de_figuras.get(2).mover(6, 6);
         //lista_de_figuras.get(2).cambiarAncho(6); ESTO NO SIRVE
+        System.out.println(lista_de_figuras.get(0));
+        System.out.println(lista_de_figuras.get(1));
+        System.out.println(lista_de_figuras.get(2));
+        
+        Collections.sort(lista_de_figuras);
+        
+        System.out.println(lista_de_figuras.get(0));
+        System.out.println(lista_de_figuras.get(1));
+        System.out.println(lista_de_figuras.get(2));    
         
         //FiguraGeometrica e = new FiguraGeometrica(); //YO NO PUEDO DIBUJAR CONCEPTOS ABSTRACTOS
         FiguraGeometrica e[] = new FiguraGeometrica[5]; // Este objeto arreglo 
         //e[0] = new FiguraGeometrica(); //Esto es objecto FiguraGeometrica ERROR!!!
-        e[1] = new Circulo();
-        e[2] = new Cuadrado();
-        e[3] = new Diamante();
+        e[1] = c;
+        e[2] = b;
+        e[3] = d;
         
+        
+        
+        //e[1].cambiarRadio(6); ERROR
+        e[1].area();
+        
+        // Ejemplo de polimorfismo: 
+            
+    }
+    
+    public void dibujar_todo(){
+        for(Dibujable elemento: lista_elementos_dibujables){
+            elemento.dibujar();
+        }
+    }
+    
+    public void borrar_todo(){
+        for(Dibujable elemento: lista_elementos_dibujables){
+            elemento.borrar();
+        }
     }
     
 }
