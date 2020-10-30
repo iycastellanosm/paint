@@ -9,6 +9,13 @@ package paint;
  *
  * @author Ivan
  */
-public interface Dibujable {
-    public void dibujar();
+/*
+public abstract class Dibujable {
+    public abstract void dibujar();
+    public abstract void borrar();
+}
+*/
+public interface Dibujable { //como esto es una interfaz, todos los metodos son abstractos
+    public void dibujar(); //esto es abstracto
+    public void borrar(); //esto es abstracto
 }

@@ -10,7 +10,7 @@ package paint;
  *
  * @author Ivan
  */
-public class Circulo extends FiguraGeometrica implements Dibujable {
+public class Circulo extends FiguraGeometrica {
     int radio;
     
     Circulo(){
@@ -33,7 +33,21 @@ public class Circulo extends FiguraGeometrica implements Dibujable {
         return Math.PI * radio * radio;
     }
     
-    public void dibujar(){
-        //como dibujo el circulo
+    @Override
+    public double area(){
+        return Math.PI * radio * radio;
     }
+    
+    @Override
+    public String toString(){ // quiero imprimir el radio de un circulo + el resto de información
+        return "Circulo. " +
+                super.toString()
+                + ", radio: " + String.valueOf(radio);
+    }
+    
+    @Override
+    public void dibujar(){}
+    
+    @Override
+    public void borrar(){}
 }

@@ -9,7 +9,7 @@ package paint;
  *
  * @author Ivan
  */
-public class Cuadrado extends FiguraGeometrica implements Dibujable{
+public class Cuadrado extends FiguraGeometrica {
     int lado;
     
     Cuadrado(){
@@ -28,7 +28,27 @@ public class Cuadrado extends FiguraGeometrica implements Dibujable{
         lado += dlado;
     }
     
-    public void dibujar(){
-        //como dibujo el cuadrado
+    @Override
+    public double area(){
+        return lado * lado;
+    }
+    
+    @Override
+    public String toString(){ // quiero imprimir el radio de un circulo + el resto de información
+        return "Cuadrado. " +
+                super.toString()
+                + ", lado: " + String.valueOf(lado);
+    }
+    
+    @Override
+    public void dibujar(){}
+    
+    @Override
+    public void borrar(){}
+    
+    @Override
+    public int compareTo(FiguraGeometrica otro){
+        Double area = this.area();
+        return area.compareTo(otro.area());
     }
 }
