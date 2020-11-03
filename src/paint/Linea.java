@@ -10,17 +10,16 @@ package paint;
  * @author Ivan
  */
 public class Linea implements Dibujable {
-    int x1, y1, x2, y2;
+    Posicion p1, p2;
     
     Linea(){
-        x1 = x2 = y1 = y2 = 0;
+        p1 = new Posicion();
+        p2 = new Posicion();
     }
     
     Linea(int x1, int y1, int x2, int y2){
-        this.x1 = x1;
-        this.y1 = y1;
-        this.x2 = x2;
-        this.y2 = y2;
+        Posicion p1 = new Posicion(x1, y1);
+        Posicion p2 = new Posicion(x2, y2);
     }
     
     // poner mas funciones mas adelante

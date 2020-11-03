@@ -23,8 +23,17 @@ public class Paint {
     
     public static void main(String[] args) {
         Circulo c = new Circulo();
+        c.radio = 4;
+        
+        System.out.println(Circulo.area(5.0));
+        System.out.println(Circulo.area("6.0"));
+       // System.out.println(Circulo.area(true)); ERROR!
+        System.out.println(Circulo.area(c));
+        System.out.println(c.area());
+        
         Cuadrado b = new Cuadrado();
         Diamante d = new Diamante();
+        Rectangulo r = new Rectangulo(0, 10, 4, 8);
         System.out.println(Circulo.area(20));
         c.mover(0, 5);
         c.cambiarRadio(-10);
@@ -43,19 +52,20 @@ public class Paint {
         lista_de_figuras.add(c);
         lista_de_figuras.add(b);
         lista_de_figuras.add(d);
+        lista_de_figuras.add(r);
         
         //lista_de_figuras[2].mover(6, 6); -> No funciona :(
         lista_de_figuras.get(2).mover(6, 6);
         //lista_de_figuras.get(2).cambiarAncho(6); ESTO NO SIRVE
-        System.out.println(lista_de_figuras.get(0));
-        System.out.println(lista_de_figuras.get(1));
-        System.out.println(lista_de_figuras.get(2));
+        for(FiguraGeometrica aux : lista_de_figuras){
+            System.out.println(aux);
+        }
         
-        Collections.sort(lista_de_figuras);
+        Collections.sort(lista_de_figuras); // Esto sirve para ordenar listas
         
-        System.out.println(lista_de_figuras.get(0));
-        System.out.println(lista_de_figuras.get(1));
-        System.out.println(lista_de_figuras.get(2));    
+        for(FiguraGeometrica aux : lista_de_figuras){
+            System.out.println(aux);
+        } 
         
         //FiguraGeometrica e = new FiguraGeometrica(); //YO NO PUEDO DIBUJAR CONCEPTOS ABSTRACTOS
         FiguraGeometrica e[] = new FiguraGeometrica[5]; // Este objeto arreglo 
@@ -63,9 +73,7 @@ public class Paint {
         e[1] = c;
         e[2] = b;
         e[3] = d;
-        
-        
-        
+
         //e[1].cambiarRadio(6); ERROR
         e[1].area();
         

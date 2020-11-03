@@ -9,16 +9,16 @@ package paint;
  *
  * @author Ivan
  */
-public class Diamante extends FiguraGeometrica {
+public class Rectangulo extends FiguraGeometrica{
     int alto, ancho;
     
-    Diamante(){
+    Rectangulo(){
         centro = new Posicion();
         alto = 10;
         ancho = 10;
     }
     
-    Diamante(int x, int y, int alto, int ancho){
+    Rectangulo(int x, int y, int alto, int ancho){
         centro = new Posicion(x, y);
         this.alto = alto;
         this.ancho = ancho;
@@ -32,21 +32,18 @@ public class Diamante extends FiguraGeometrica {
         ancho += dancho;
     }
     
-    @Override //sobrecarga de funciones
     public final double area(){
-        return alto * ancho / 2.0;
+        return alto * ancho;
     }
     
     @Override
     public String toString(){ // quiero imprimir el radio de un circulo + el resto de información
-        return "Diamante. " +
-                super.toString() 
+        return "Rectangulo. " +
+                super.toString()
                 + ", alto: " + String.valueOf(alto) + ", ancho: " + String.valueOf(ancho);
     }
     
-    @Override
     public void dibujar(){}
     
-    @Override
     public void borrar(){}
 }

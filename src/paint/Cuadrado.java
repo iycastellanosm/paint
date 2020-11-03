@@ -9,46 +9,28 @@ package paint;
  *
  * @author Ivan
  */
-public class Cuadrado extends FiguraGeometrica {
+public final class Cuadrado extends Rectangulo { // una clase final es una clase concreta que no puede ser heredada
     int lado;
     
     Cuadrado(){
-        x = 0;
-        y = 0;
-        lado = 10;
+        super(); //crea un rectangulo de alto 10 y ancho 10 -> lado = 10
     }
     
     Cuadrado(int x, int y, int lado){
-        this.x = x;
-        this.y = y;
+        super(x, y, lado, lado);
         this.lado = lado;
     }
     
     public void cambiarLado(int dlado){
+        cambiarAlto(dlado);
+        cambiarAncho(dlado);
         lado += dlado;
-    }
-    
-    @Override
-    public double area(){
-        return lado * lado;
     }
     
     @Override
     public String toString(){ // quiero imprimir el radio de un circulo + el resto de información
         return "Cuadrado. " +
-                super.toString()
+                "area: " + String.valueOf(this.area()) + ", " + centro.toString()
                 + ", lado: " + String.valueOf(lado);
-    }
-    
-    @Override
-    public void dibujar(){}
-    
-    @Override
-    public void borrar(){}
-    
-    @Override
-    public int compareTo(FiguraGeometrica otro){
-        Double area = this.area();
-        return area.compareTo(otro.area());
     }
 }

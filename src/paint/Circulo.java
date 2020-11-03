@@ -10,18 +10,16 @@ package paint;
  *
  * @author Ivan
  */
-public class Circulo extends FiguraGeometrica {
+public final class Circulo extends FiguraGeometrica {
     int radio;
     
     Circulo(){
-        x = 0;
-        y = 0;
+        centro = new Posicion();
         radio = 10;
     }
     
     Circulo(int x, int y, int radio){
-        this.x = x;
-        this.y = y;
+        centro = new Posicion(x, y);
         this.radio = radio;
     }
     
@@ -34,8 +32,20 @@ public class Circulo extends FiguraGeometrica {
     }
     
     @Override
-    public double area(){
+    public final double area(){ // calcula el area de ESTE circulo (objeto)
+        return Math.PI * this.radio * this.radio;
+    }
+    
+    public static double area(double radio){ // calcula el area de un circulo cualquiera dado su radio
         return Math.PI * radio * radio;
+    }
+    
+    public static double area(String radio){ // calcula el area de un circulo cualquiera dado su radio
+        return Math.PI * Double.parseDouble(radio) * Double.parseDouble(radio);
+    }
+    
+    public static double area(Circulo c){ // calcula el area de un circulo cualquiera dado el circulo
+        return c.area();
     }
     
     @Override
