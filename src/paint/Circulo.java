@@ -56,7 +56,19 @@ public final class Circulo extends FiguraGeometrica {
     }
     
     @Override
-    public void dibujar(){}
+    public void dibujar(){
+        Lienzo canvas = Lienzo.getLienzo();
+        for(int y = 0; y < canvas.getAlto(); y++){
+            for(int x = 0; x < canvas.getAncho(); x++){
+                int dx = x - centro.getX();
+                int dy = y - centro.getY();
+                if(dx * dx + dy * dy <= radio * radio){
+                    //estoy en el rectangulo
+                    canvas.setPixel(new Posicion(x, y), true); // colorea el pixel
+                }
+            }
+        }
+    }
     
     @Override
     public void borrar(){}

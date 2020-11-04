@@ -43,7 +43,18 @@ public class Rectangulo extends FiguraGeometrica{
                 + ", alto: " + String.valueOf(alto) + ", ancho: " + String.valueOf(ancho);
     }
     
-    public void dibujar(){}
+    public void dibujar(){
+        //Lienzo canvas = new Lienzo();
+        Lienzo canvas = Lienzo.getLienzo();
+        for(int y = 0; y < canvas.getAlto(); y++){
+            for(int x = 0; x < canvas.getAncho(); x++){
+                if(Math.abs(x - centro.getX()) <= ancho / 2 && Math.abs(y - centro.getY()) <= alto / 2){
+                    //estoy en el rectangulo
+                    canvas.setPixel(new Posicion(x, y), true); // colorea el pixel
+                }
+            }
+        }
+    }
     
     public void borrar(){}
 }

@@ -13,7 +13,7 @@ import java.util.Collections;
  */
 public class Paint {
 
-    ArrayList<Dibujable> lista_elementos_dibujables;
+    static ArrayList<Dibujable> lista_elementos_dibujables;
     /**
      * @param args the command line arguments
      */
@@ -22,6 +22,7 @@ public class Paint {
     }
     
     public static void main(String[] args) {
+        
         Circulo c = new Circulo();
         c.radio = 4;
         
@@ -33,12 +34,12 @@ public class Paint {
         
         Cuadrado b = new Cuadrado();
         Diamante d = new Diamante();
-        Rectangulo r = new Rectangulo(0, 10, 4, 8);
+        Rectangulo r = new Rectangulo(100, 100, 20, 10);
         System.out.println(Circulo.area(20));
-        c.mover(0, 5);
-        c.cambiarRadio(-10);
+        c.mover(50, 50);
+        c.cambiarRadio(10);
         //c.cambiarAncho(6); ESTO NO SIRVE
-        b.mover(-4, -4);
+        b.mover(180, 20);
         b.cambiarLado(5);
         d.mover(10, -10);
         d.cambiarAlto(15);
@@ -77,13 +78,27 @@ public class Paint {
         //e[1].cambiarRadio(6); ERROR
         e[1].area();
         
-        // Ejemplo de polimorfismo: 
-            
+        lista_elementos_dibujables = new ArrayList();
+        lista_elementos_dibujables.add(c);
+        lista_elementos_dibujables.add(b);
+        lista_elementos_dibujables.add(d);
+        lista_elementos_dibujables.add(r);
+        dibujar_todo();
     }
     
-    public void dibujar_todo(){
+    public static void dibujar_todo(){
         for(Dibujable elemento: lista_elementos_dibujables){
             elemento.dibujar();
+        }
+        Lienzo canvas = Lienzo.getLienzo();
+        for(int y = 0; y < canvas.getAlto(); y++){
+            for(int x = 0; x < canvas.getAncho(); x++){
+                if(canvas.getPixel(new Posicion(x, y))){
+                    System.out.print('■');
+                }
+                System.out.print(' ');
+            }
+            System.out.println();
         }
     }
     
